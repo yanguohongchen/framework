@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>接口文档</title>
+		<meta name="content-type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.css" />
+		<style type="text/css" media="screen">
+			body {
+				padding-top: 70px;
+			}
+			label{
+				font-size: 14px;
+				font-weight:bold;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 导航条-->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<p class="navbar-text">
+				dp-web 平台接口文档
+			</p>
+			<form class="navbar-form navbar-right" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="接口搜索">
+				</div>
+				<button type="submit" class="btn btn-default">
+					Submit
+				</button>
+			</form>
+		</nav>
+		<!-- 主体 -->
+		<div id="content">
+		</div>
+	</body>
+	<!-- 模版 -->
+	<script type="text/juicer" id="formats_tpl">
+		{@each formats as format,index}
+			<ul class="list-group">
+				  <li class="list-group-item list-group-item-warning"><label>参数格式</label>${index}</li>
+				  <li class="list-group-item">${format}</li>
+			</ul>
+		{@/each}
+	</script>
+	<script type="text/juicer" id="params_tpl">
+		{@each params as param,index}
+			<ul class="list-group">
+				 <li class="list-group-item list-group-item-success"><label>参数${index}</label></li>
+				  <li class="list-group-item"><label>参数名:　</label>${param.paramName}</li>
+				  <li class="list-group-item"><label>参数类型:　</label>${param.paramType}</li>
+				  <li class="list-group-item"><label>参数描述:　</label>${param.summary}</li>
+				  <li class="list-group-item">$${param.formats|dealFormats}</li>
+			</ul>
+		{@/each}
+	</script>
+	<script type="text/juicer" id="module_methodinfo_tpl">
+		{@each mapvalue as item}
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<label>方法名:　</label>${item.methodName} 
+				</div>
+				<div class="panel-body">
+					<ul class="list-group" id="${item.methodName}">
+						<li class="list-group-item">
+							 <label>匹配地址:　</label>${item.mapperName}
+						</li>
+						<li class="list-group-item">
+							<label>描述:　</label>${item.summary}
+						</li>
+						<li class="list-group-item">
+							<label>返回类型:　</label>${item.returnType} 
+						</li>
+						<li class="list-group-item">
+							<label>搜索词:　</label>${item.searchKey}
+						</li>
+						<li class="list-group-item">
+							$${item.params|dealParam}
+						</li>
+						<li class="list-group-item">
+							<label>返回json类型:　</label>$${item.data|jsonToString}
+						</li>
+					</ul>
+				</div>
+			</div>
+		{@/each}
+	</script>
+	<script src="js/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="js/juicer.js"></script>
+	<script src="bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+	<script src="js/base.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/index.js"></script>
+	<script>
+		Index.init();
+	</script>
+
+</html>

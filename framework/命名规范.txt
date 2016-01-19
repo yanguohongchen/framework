@@ -1,0 +1,5 @@
+
+1.在controller中每个方法有不同参数对象，为了好辨认，也好取名直接使用 模块名_方法名+parameter  如: User_UserAddParamter
+2.测试用例名称取名，使用 模块名_方法名
+
+

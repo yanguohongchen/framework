@@ -1,0 +1,7 @@
+jackson 注解
+http://blog.csdn.net/sdyy321/article/details/40298081
+
+
+hibernate 参数验证
+
+http://tcrct.iteye.com/blog/1329823
